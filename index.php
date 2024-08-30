@@ -1,102 +1,42 @@
 <?php
-// connection 
-$servername = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'portfolio';
+// $servername = 'localhost';
+// $username = 'root';
+// $password = '';
+// $database = 'portfolio';
 
-$conn = mysqli_connect($servername, $username, $password, $database);
+// $conn = mysqli_connect($servername, $username, $password, $database);
 
-if (!$conn) {
-    echo "Connection Unsucessful can not connect beacuse ---> " . mysqli_connect_error();
-}
-use PHPMailer\PHPMailer\PHPMailer;
+// if (!$conn) {
+//     echo "Connection Unsucessful can not connect beacuse ---> " . mysqli_connect_error();
+// }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $phone = $_POST["phone"];
-    $subject = $_POST["subject"];
-    $msg = $_POST["msg"];
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $name = $_POST["name"];
+//     $email = $_POST["email"];
+//     $phone = $_POST["phone"];
+//     $subject = $_POST["subject"];
+//     $msg = $_POST["msg"];
 
-    $insertContactdata = "INSERT INTO `contacts` (`name`, `contactno`, `email`, `subject`, `msg`) VALUES ('$name', '$email', '$phone', '$subject', '$msg')";
-    $quesyInsertContactData = mysqli_query($conn, $insertContactdata);
+//     $insertContactdata = "INSERT INTO `contacts` (`name`, `contactno`, `email`, `subject`, `msg`) VALUES ('$name', '$email', '$phone', '$subject', '$msg')";
+//     $quesyInsertContactData = mysqli_query($conn, $insertContactdata);
 
-    if ($quesyInsertContactData) {
-        require_once "PHPMailer/PHPMailer.php";
-        require_once "PHPMailer/SMTP.php";
-        require_once "PHPMailer/Exception.php";
+//     if ($quesyInsertContactData) {
+//         echo '
+//             <script>
+//                 alert("Thanks for connecting with Me.");
+//                 window.location.href = "index";
+//             </script>';
+//     } else {
+//         echo '
+//             <script>
+//                 alert("Something went wrong while connecting with me.");
+//                 window.location.href = "index";
+//             </script>';
+//     }
+// }
+// mysqli_close($conn);
 
-        $mail = new PHPMailer();
-
-        //SMTP Settings
-        $mail->isSMTP();
-        $mail->Host = "smtp.gmail.com";
-        $mail->SMTPAuth = true;
-        $mail->Username = "shubhamshinde9530@gmail.com";
-        $mail->Password = "njev dftd fdpb gfyo";
-        $mail->Port = 465;
-        $mail->SMTPSecure = "ssl";
-
-        $mail->isHTML(true);
-        $mail->setFrom($email);
-        $mail->addAddress($email);
-        $mail->Subject = ("Thanks for Connecting with Me");
-        $mail->Body = "Dear $name, " . "<br>" . "<br>" . "
-
-        I wanted to extend my heartfelt appreciation for taking the time to connect with me through my portfolio website." . "<br>" . "<br>" . "
-    
-        Your interest and engagement mean a lot to me, and I am genuinely grateful for the opportunity to connect. I acknowledge the information you've provided, and I'll make sure to review it thoroughly. Please be assured that I will get back to you as promptly as possible." . "<br>" . "<br>" . "
-        
-        In the meantime, if you have any urgent queries or require immediate assistance, please don't hesitate to reach out to me directly at +91 7774882080" . "<br>" . "<br>" . "
-        
-        Once again, thank you for reaching out. I look forward to the possibility of working together or discussing how we can collaborate in the future." . "<br>" . "<br>" . "
-        
-        Best regards, " . "<br>" . "
-        
-        Shubham Shinde" . "<br>" . "
-        Junior Software Developer";
-
-        $mail->send();
-
-
-        // Second email
-        $mail->ClearAddresses(); // Clear the previous recipient
-        $mail->addAddress("shubhamshinde9530@gmail.com");
-        $mail->Subject = "New Connection Request from Portfolio";
-        $mail->Body = "Dear Sir, " . "<br>" . "<br>" . "
-        I wish to inform you about a recent connection request that has been submitted through your portfolio. The request pertains to the following details: " . "<br>" . "
-        Name: $name " . "<br>" ."
-        Email: $email " . "<br>" ."
-        Contact Number: $phone " . "<br>" ."
-        Subject: $subject " . "<br>" ."
-        Message: $msg " . "<br>" . "<br>" ."
-        
-        I wanted to bring this to your attention as it appears that someone is interested in connecting with you directly. This could potentially lead to beneficial opportunities or collaborations that align with your objectives. I encourage you to consider reaching out to this individual using the provided contact information. " . "<br>" . "<br>" ."
-        
-        Thank You
-        ";
-
-        try {
-            if ($mail->send()) {
-                echo '<script>
-                        alert("Thanks for connecting with Me.");
-                        window.location.href = "index";
-                    </script>';
-            }
-        } catch (Exception $e) {
-            echo '<script>
-                        alert("Something went wrong while connecting with me.");
-                        window.location.href = "index";
-                    </script>';
-        }
-        mysqli_close($conn);
-
-        exit();
-    }
-
-
-}
+// exit();
 ?>
 
 <!DOCTYPE html>
@@ -200,25 +140,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="social-share-style-1 mt--40">
                     <span class="title">find with me</span>
                     <ul class="social-share d-flex liststyle">
-                        <li class="facebook"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
+                        <li class="facebook"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook">
                                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                                 </svg></a>
                         </li>
-                        <li class="instagram"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+                        <li class="instagram"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
                                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                                 </svg></a>
                         </li>
-                        <li class="linkedin"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin">
-                                    <path
-                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                        <li class="linkedin"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
                                     </path>
                                     <rect x="2" y="9" width="4" height="12"></rect>
                                     <circle cx="4" cy="4" r="2"></circle>
@@ -274,17 +207,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <div class="social-share-inner-left">
                                             <span class="title">find with me</span>
                                             <ul class="social-share d-flex liststyle">
-                                                <li class="facebook"><a
-                                                        href="https://www.facebook.com/profile.php?id=100009714557541"
-                                                        target="_blank"><i data-feather="facebook"></i></a>
+                                                <li class="facebook"><a href="https://www.facebook.com/profile.php?id=100009714557541" target="_blank"><i data-feather="facebook"></i></a>
                                                 </li>
-                                                <li class="instagram"><a
-                                                        href="https://www.instagram.com/_shubham__shinde_"
-                                                        target="_blank"><i data-feather="instagram"></i></a>
+                                                <li class="instagram"><a href="https://www.instagram.com/_shubham__shinde_" target="_blank"><i data-feather="instagram"></i></a>
                                                 </li>
-                                                <li class="linkedin"><a
-                                                        href="http://linkedin.com/in/shubham-shinde-588005223"
-                                                        target="_blank"><i data-feather="linkedin"></i></a>
+                                                <li class="linkedin"><a href="http://linkedin.com/in/shubham-shinde-588005223" target="_blank"><i data-feather="linkedin"></i></a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -321,8 +248,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="section-title text-left" data-aos="fade-up" data-aos-duration="500"
-                            data-aos-delay="100" data-aos-once="true">
+                        <div class="section-title text-left" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true">
                             <span class="subtitle">Work</span>
                             <h2 class="title">What have I done?</h2>
                         </div>
@@ -331,8 +257,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="row row--25 mt_md--10 mt_sm--10">
 
                     <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
                         <div class="rn-service">
                             <div class="inner">
                                 <div class="icon">
@@ -349,8 +274,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <!-- End SIngle Service -->
                     <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
                         <div class="rn-service">
                             <div class="inner">
                                 <div class="icon">
@@ -367,15 +291,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <!-- End SIngle Service -->
                     <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
                         <div class="rn-service">
                             <div class="inner">
                                 <div class="icon">
                                     <i data-feather="smartphone"></i>
                                 </div>
                                 <div class="content">
-                                    <h4 class="title"><a href="#">Andriod  Development</a></h4>
+                                    <h4 class="title"><a href="#">Andriod Development</a></h4>
                                     <p class="description">Developing applications for Android mobile devices and platforms.</p>
                                     <a class="read-more-button" href="#"><i class="feather-arrow-right"></i></a>
                                 </div>
@@ -385,8 +308,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <!-- End SIngle Service -->
                     <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
                         <div class="rn-service">
                             <div class="inner">
                                 <div class="icon">
@@ -404,8 +326,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <!-- End SIngle Service -->
                     <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
                         <div class="rn-service">
                             <div class="inner">
                                 <div class="icon">
@@ -422,8 +343,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <!-- End SIngle Service -->
                     <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
+                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
                         <div class="rn-service">
                             <div class="inner">
                                 <div class="icon">
@@ -460,23 +380,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="col-lg-12">
                         <ul class="rn-nav-list nav nav-tabs" id="myTabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="professional-tab" data-toggle="tab" href="#professional"
-                                    role="tab" aria-controls="professional" aria-selected="false">professional
+                                <a class="nav-link active" id="professional-tab" data-toggle="tab" href="#professional" role="tab" aria-controls="professional" aria-selected="false">professional
                                     Skills</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" id="education-tab" data-toggle="tab" href="#education" role="tab"
-                                    aria-controls="education" aria-selected="true">education</a>
+                                <a class="nav-link" id="education-tab" data-toggle="tab" href="#education" role="tab" aria-controls="education" aria-selected="true">education</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" id="experience-tab" data-toggle="tab" href="#experience" role="tab"
-                                    aria-controls="experience" aria-selected="false">experience</a>
+                                <a class="nav-link" id="experience-tab" data-toggle="tab" href="#experience" role="tab" aria-controls="experience" aria-selected="false">experience</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="interview-tab" data-toggle="tab" href="#interview" role="tab"
-                                    aria-controls="interview" aria-selected="false">Certification</a>
+                                <a class="nav-link" id="interview-tab" data-toggle="tab" href="#interview" role="tab" aria-controls="interview" aria-selected="false">Certification</a>
                             </li>
                         </ul>
                         <!-- Start Tab Content Wrapper  -->
@@ -568,8 +484,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <!-- End Single Tab  -->
 
                             <!-- Start Single Tab  -->
-                            <div class="tab-pane show active fade single-tab-area " id="professional" role="tabpanel"
-                                aria-labelledby="professional-tab">
+                            <div class="tab-pane show active fade single-tab-area " id="professional" role="tabpanel" aria-labelledby="professional-tab">
                                 <div class="personal-experience-inner mt--40">
                                     <div class="row row--40">
 
@@ -583,12 +498,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <div class="progress-charts">
                                                         <h6 class="heading heading-h6">HTML</h6>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.5s" data-wow-delay=".3s"
-                                                                role="progressbar" style="width: 100%"
-                                                                aria-valuenow="85" aria-valuemin="0"
-                                                                aria-valuemax="100"><span
-                                                                    class="percent-label">100%</span></div>
+                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay=".3s" role="progressbar" style="width: 100%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">100%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -597,11 +507,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <div class="progress-charts">
                                                         <h6 class="heading heading-h6">CSS</h6>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.6s" data-wow-delay=".4s"
-                                                                role="progressbar" style="width: 95%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">95%</span></div>
+                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.6s" data-wow-delay=".4s" role="progressbar" style="width: 95%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">95%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -610,24 +516,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <div class="progress-charts">
                                                         <h6 class="heading heading-h6">JavaScript</h6>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.7s" data-wow-delay=".5s"
-                                                                role="progressbar" style="width: 80%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">80%</span></div>
+                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay=".5s" role="progressbar" style="width: 80%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
 
                                                     <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">React JS</h6>
+                                                        <h6 class="heading heading-h6">Tailwind CSS</h6>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.8s" data-wow-delay=".6s"
-                                                                role="progressbar" style="width: 70%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">70%</span></div>
+                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay=".6s" role="progressbar" style="width: 70%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">70%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -636,11 +534,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <div class="progress-charts">
                                                         <h6 class="heading heading-h6">Bootstrap</h6>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.9s" data-wow-delay=".7s"
-                                                                role="progressbar" style="width: 90%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">90%</span></div>
+                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 90%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -660,12 +554,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <div class="progress-charts">
                                                         <h6 class="heading heading-h6">PHP</h6>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.5s" data-wow-delay=".3s"
-                                                                role="progressbar" style="width: 100%"
-                                                                aria-valuenow="85" aria-valuemin="0"
-                                                                aria-valuemax="100"><span
-                                                                    class="percent-label">100%</span></div>
+                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay=".3s" role="progressbar" style="width: 100%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">100%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -674,11 +563,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <div class="progress-charts">
                                                         <h6 class="heading heading-h6">Spring Boot</h6>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.6s" data-wow-delay=".4s"
-                                                                role="progressbar" style="width: 80%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">80%</span></div>
+                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.6s" data-wow-delay=".4s" role="progressbar" style="width: 80%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">80%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -687,37 +572,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <div class="progress-charts">
                                                         <h6 class="heading heading-h6">Django</h6>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.7s" data-wow-delay=".5s"
-                                                                role="progressbar" style="width: 90%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">90%</span></div>
+                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.7s" data-wow-delay=".5s" role="progressbar" style="width: 90%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">90%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
 
                                                     <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">Node JS</h6>
+                                                        <h6 class="heading heading-h6">MySQL</h6>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.8s" data-wow-delay=".6s"
-                                                                role="progressbar" style="width: 75%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">75%</span></div>
+                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.8s" data-wow-delay=".6s" role="progressbar" style="width: 75%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">75%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
 
                                                     <!-- Start Single Progress Charts -->
                                                     <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">Spring MVC</h6>
+                                                        <h6 class="heading heading-h6">Laravel</h6>
                                                         <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.9s" data-wow-delay=".7s"
-                                                                role="progressbar" style="width: 70%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">70%</span></div>
+                                                            <div class="progress-bar wow fadeInLeft" data-wow-duration="0.9s" data-wow-delay=".7s" role="progressbar" style="width: 70%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span class="percent-label">70%</span></div>
                                                         </div>
                                                     </div>
                                                     <!-- End Single Progress Charts -->
@@ -838,11 +711,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <div class="experience-list">
 
                                                     <!-- Start Single List  -->
-                                                    <a
-                                                        href="https://www.coursera.org/account/accomplishments/verify/ZE7GT6MKU5CF">
-                                                        <div data-aos="fade-up" data-aos-duration="500"
-                                                            data-aos-delay="300" data-aos-once="true"
-                                                            class="resume-single-list">
+                                                    <a href="https://www.coursera.org/account/accomplishments/verify/ZE7GT6MKU5CF">
+                                                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true" class="resume-single-list">
                                                             <div class="inner">
                                                                 <div class="heading">
                                                                     <div class="title">
@@ -858,11 +728,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     </a>
                                                     <!-- End Single List  -->
                                                     <!-- Start Single List  -->
-                                                    <a
-                                                        href="https://www.credly.com/badges/ef62024f-4a6d-4a72-9627-63926c411913/linked_in_profile">
-                                                        <div data-aos="fade-up" data-aos-duration="500"
-                                                            data-aos-delay="300" data-aos-once="true"
-                                                            class="resume-single-list">
+                                                    <a href="https://www.credly.com/badges/ef62024f-4a6d-4a72-9627-63926c411913/linked_in_profile">
+                                                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true" class="resume-single-list">
                                                             <div class="inner">
                                                                 <div class="heading">
                                                                     <div class="title">
@@ -879,11 +746,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <!-- End Single List  -->
 
                                                     <!-- Start Single List  -->
-                                                    <a
-                                                        href="https://drive.google.com/file/d/1qxaefrWr88WKzkFIk0dYLYULwCdBAx1r/view?usp=sharing">
-                                                        <div data-aos="fade-up" data-aos-duration="500"
-                                                            data-aos-delay="500" data-aos-once="true"
-                                                            class="resume-single-list">
+                                                    <a href="https://drive.google.com/file/d/1qxaefrWr88WKzkFIk0dYLYULwCdBAx1r/view?usp=sharing">
+                                                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="resume-single-list">
                                                             <div class="inner">
                                                                 <div class="heading">
                                                                     <div class="title">
@@ -900,11 +764,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <!-- End Single List  -->
 
                                                     <!-- Start Single List  -->
-                                                    <a
-                                                        href="https://drive.google.com/file/d/1rGaqxHFTe3tYoHk1hlBtQT9pGL4dObnO/view?usp=sharing">
-                                                        <div data-aos="fade-up" data-aos-duration="500"
-                                                            data-aos-delay="900" data-aos-once="true"
-                                                            class="resume-single-list">
+                                                    <a href="https://drive.google.com/file/d/1rGaqxHFTe3tYoHk1hlBtQT9pGL4dObnO/view?usp=sharing">
+                                                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="900" data-aos-once="true" class="resume-single-list">
                                                             <div class="inner">
                                                                 <div class="heading">
                                                                     <div class="title">
@@ -933,11 +794,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <div class="experience-list">
 
                                                     <!-- Start Single List  -->
-                                                    <a
-                                                        href="https://coursera.org/share/adf75c5da893ba15df1a624f24710ef8">
-                                                        <div data-aos="fade-up" data-aos-duration="500"
-                                                            data-aos-delay="500" data-aos-once="true"
-                                                            class="resume-single-list">
+                                                    <a href="https://coursera.org/share/adf75c5da893ba15df1a624f24710ef8">
+                                                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true" class="resume-single-list">
                                                             <div class="inner">
                                                                 <div class="heading">
                                                                     <div class="title">
@@ -956,11 +814,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <!-- End Single List  -->
 
                                                     <!-- Start Single List  -->
-                                                    <a
-                                                        href="https://drive.google.com/file/d/1mUKj0yyd-yTgBVJjXdJzMoWPf5X1RIgd/view?usp=sharing">
-                                                        <div data-aos="fade-up" data-aos-duration="500"
-                                                            data-aos-delay="900" data-aos-once="true"
-                                                            class="resume-single-list">
+                                                    <a href="https://drive.google.com/file/d/1mUKj0yyd-yTgBVJjXdJzMoWPf5X1RIgd/view?usp=sharing">
+                                                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="900" data-aos-once="true" class="resume-single-list">
                                                             <div class="inner">
                                                                 <div class="heading">
                                                                     <div class="title">
@@ -979,11 +834,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                                                     <!-- Start Single List  -->
-                                                    <a
-                                                        href="https://drive.google.com/file/d/1ROsO2lMIFGpa5WEULP5rGAC03r-QbCYs/view?usp=sharing">
-                                                        <div data-aos="fade-up" data-aos-duration="500"
-                                                            data-aos-delay="900" data-aos-once="true"
-                                                            class="resume-single-list">
+                                                    <a href="https://drive.google.com/file/d/1ROsO2lMIFGpa5WEULP5rGAC03r-QbCYs/view?usp=sharing">
+                                                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="900" data-aos-once="true" class="resume-single-list">
                                                             <div class="inner">
                                                                 <div class="heading">
                                                                     <div class="title">
@@ -1000,8 +852,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                     <!-- End Single List  -->
 
                                                     <!-- Start Single List  -->
-                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="900"
-                                                        data-aos-once="true" class="resume-single-list">
+                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="900" data-aos-once="true" class="resume-single-list">
                                                         <div class="inner">
                                                             <div class="heading">
                                                                 <div class="title">
@@ -1441,34 +1292,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="col-lg-4">
                         <div class="d-flex flex-wrap align-content-start h-100">
                             <div class="position-sticky clients-wrapper sticky-top rbt-sticky-top-adjust">
-                                <ul class="nav tab-navigation-button flex-column nav-pills me-3" id="v-pills-tab"
-                                    role="tablist">
+                                <ul class="nav tab-navigation-button flex-column nav-pills me-3" id="v-pills-tab" role="tablist">
 
                                     <li class="nav-item">
-                                        <a class="nav-link" id="v-pills-home-tab" data-toggle="tab"
-                                            href="#v-pills-Javascript" role="tab" aria-selected="true">JavaScript</a>
+                                        <a class="nav-link" id="v-pills-home-tab" data-toggle="tab" href="#v-pills-Javascript" role="tab" aria-selected="true">JavaScript</a>
                                     </li>
 
 
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="v-pills-profile-tab" data-toggle="tab"
-                                            href="#v-pills-Design" role="tab" aria-selected="true">PHP</a>
+                                        <a class="nav-link active" id="v-pills-profile-tab" data-toggle="tab" href="#v-pills-Design" role="tab" aria-selected="true">PHP</a>
                                     </li>
 
 
                                     <li class="nav-item">
-                                        <a class="nav-link" id="v-pills-wordpress-tab" data-toggle="tab"
-                                            href="#v-pills-Wordpress" role="tab" aria-selected="true">Java</a>
+                                        <a class="nav-link" id="v-pills-wordpress-tab" data-toggle="tab" href="#v-pills-Wordpress" role="tab" aria-selected="true">Java</a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" id="v-pills-settings-tabs" data-toggle="tab"
-                                            href="#v-pills-settings" role="tab" aria-selected="true">React</a>
+                                        <a class="nav-link" id="v-pills-settings-tabs" data-toggle="tab" href="#v-pills-settings" role="tab" aria-selected="true">React</a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" id="v-pills-laravel-tabs" data-toggle="tab"
-                                            href="#v-pills-laravel" role="tab" aria-selected="true">Django</a>
+                                        <a class="nav-link" id="v-pills-laravel-tabs" data-toggle="tab" href="#v-pills-laravel" role="tab" aria-selected="true">Django</a>
                                     </li>
 
 
@@ -1482,16 +1327,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="d-flex align-items-start">
                                 <div class="tab-content" id="v-pills-tabContent">
 
-                                    <div class="tab-pane fade" id="v-pills-Javascript" role="tabpanel"
-                                        aria-labelledby="v-pills-home-tab">
+                                    <div class="tab-pane fade" id="v-pills-Javascript" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                         <div class="client-card">
 
                                             <!-- Start Single Brand  -->
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NoteTaking.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NoteTaking.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Note Taking</a></span>
@@ -1504,8 +1347,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/LiveNews.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/LiveNews.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Live News</a></span>
@@ -1518,8 +1360,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/libraray.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/libraray.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Librabray
@@ -1533,9 +1374,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img
-                                                                src="assets/images/Projects/formValidation.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/formValidation.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Form
@@ -1549,8 +1388,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/Calculator.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/Calculator.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Calculator</a></span>
@@ -1563,8 +1401,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/alaram.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/alaram.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Alaram Clock</a></span>
@@ -1577,8 +1414,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -1597,8 +1433,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -1611,8 +1446,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -1624,21 +1458,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade show active" id="v-pills-Design" role="tabpanel"
-                                        aria-labelledby="v-pills-profile-tab">
+                                    <div class="tab-pane fade show active" id="v-pills-Design" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                         <div class="client-card">
 
                                             <!-- Start Single Brand  -->
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img
-                                                                src="assets/images/Projects/tms.png"
-                                                                alt="Client-image"></a>
+                                                        <a href="https://mangeshghogre.com" target="_blank"><img src="assets/images/Projects/mg_crossword.png" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
-                                                    <div class="client-name"><span><a href="#"
-                                                                id="rehbarFoundation">AgileTime ETS</a></span>
+                                                    <div class="client-name"><span><a href="#" id="rehbarFoundation">MG's Indian Mini Crossword</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Brand  -->
+                                            <!-- Start Single Brand  -->
+                                            <div class="main-content">
+                                                <div class="inner text-center">
+                                                    <div class="thumbnail">
+                                                        <a href="#"><img src="assets/images/Projects/tms.png" alt="Client-image"></a>
+                                                    </div>
+                                                    <div class="seperator"></div>
+                                                    <div class="client-name"><span><a href="#" id="rehbarFoundation">AgileTime ETS</a></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1648,9 +1490,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img
-                                                                src="assets/images/Projects/HareshwarFood.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/HareshwarFood.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Hareshwar Foods & Agro
@@ -1664,9 +1504,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img
-                                                                src="assets/images/Projects/dental.png"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/dental.png" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Perfect Smile Dental Clinic & Implant Centre</a></span>
@@ -1679,8 +1517,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/SwarajAgro.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/SwarajAgro.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Swaraj Agro</a></span>
@@ -1693,8 +1530,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/Portfolio1.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/Portfolio1.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Portfolio
@@ -1708,8 +1544,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/Divid.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/Divid.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">DAVID CHU'S CHINA
@@ -1723,8 +1558,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/classes.png"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/classes.png" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">ASDR EduPulse Connect</a></span>
@@ -1737,8 +1571,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/saponite.png"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/saponite.png" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Saponite Consultancy</a></span>
@@ -1751,8 +1584,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/real estate.png"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/real estate.png" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Real Estate</a></span>
@@ -1764,8 +1596,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/E-Commerce.png"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/E-Commerce.png" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">E-Commerce</a></span>
@@ -1777,21 +1608,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
-                                                    </div>
-                                                    <div class="seperator"></div>
-                                                    <div class="client-name"><span><a href="#">NA</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Brand  -->
-                                            <!-- Start Single Brand  -->
-                                            <div class="main-content">
-                                                <div class="inner text-center">
-                                                    <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -1802,16 +1619,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="v-pills-Wordpress" role="tabpanel"
-                                        aria-labelledby="v-pills-wordpress-tab">
+                                    <div class="tab-pane fade" id="v-pills-Wordpress" role="tabpanel" aria-labelledby="v-pills-wordpress-tab">
                                         <div class="client-card">
 
                                             <!-- Start Single Brand  -->
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/asdrlms.PNG"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/asdrlms.PNG" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">ASDR LMS</a></span>
@@ -1824,8 +1639,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Java Swing</a></span>
@@ -1838,8 +1652,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">Java Spring</a></span>
@@ -1852,8 +1665,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -1866,8 +1678,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -1880,8 +1691,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -1894,8 +1704,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -1908,8 +1717,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -1922,142 +1730,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
-                                                    </div>
-                                                    <div class="seperator"></div>
-                                                    <div class="client-name"><span><a href="#">NA</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Brand  -->
-
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                                        aria-labelledby="v-pills-settings-tabs">
-                                        <div class="client-card">
-
-                                            <!-- Start Single Brand  -->
-                                            <div class="main-content">
-                                                <div class="inner text-center">
-                                                    <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
-                                                    </div>
-                                                    <div class="seperator"></div>
-                                                    <div class="client-name"><span><a href="#">NA</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Brand  -->
-
-
-                                            <!-- Start Single Brand  -->
-                                            <div class="main-content">
-                                                <div class="inner text-center">
-                                                    <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
-                                                    </div>
-                                                    <div class="seperator"></div>
-                                                    <div class="client-name"><span><a href="#">NA</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Brand  -->
-
-                                            <!-- Start Single Brand  -->
-                                            <div class="main-content">
-                                                <div class="inner text-center">
-                                                    <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
-                                                    </div>
-                                                    <div class="seperator"></div>
-                                                    <div class="client-name"><span><a href="#">NA</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Brand  -->
-
-                                            <!-- Start Single Brand  -->
-                                            <div class="main-content">
-                                                <div class="inner text-center">
-                                                    <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
-                                                    </div>
-                                                    <div class="seperator"></div>
-                                                    <div class="client-name"><span><a href="#">NA</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Brand  -->
-
-                                            <!-- Start Single Brand  -->
-                                            <div class="main-content">
-                                                <div class="inner text-center">
-                                                    <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
-                                                    </div>
-                                                    <div class="seperator"></div>
-                                                    <div class="client-name"><span><a href="#">NA</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Brand  -->
-
-                                            <!-- Start Single Brand  -->
-                                            <div class="main-content">
-                                                <div class="inner text-center">
-                                                    <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
-                                                    </div>
-                                                    <div class="seperator"></div>
-                                                    <div class="client-name"><span><a href="#">NA</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Brand  -->
-
-                                            <!-- Start Single Brand  -->
-                                            <div class="main-content">
-                                                <div class="inner text-center">
-                                                    <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
-                                                    </div>
-                                                    <div class="seperator"></div>
-                                                    <div class="client-name"><span><a href="#">NA</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Brand  -->
-
-                                            <!-- Start Single Brand  -->
-                                            <div class="main-content">
-                                                <div class="inner text-center">
-                                                    <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
-                                                    </div>
-                                                    <div class="seperator"></div>
-                                                    <div class="client-name"><span><a href="#">NA</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- End Single Brand  -->
-
-                                            <!-- Start Single Brand  -->
-                                            <div class="main-content">
-                                                <div class="inner text-center">
-                                                    <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -2069,32 +1742,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="v-pills-laravel" role="tabpanel"
-                                        aria-labelledby="v-pills-laravel-tabs">
+                                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tabs">
                                         <div class="client-card">
 
                                             <!-- Start Single Brand  -->
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img
-                                                                src="assets/images/Projects/RehbarFoundation.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
-                                                    <div class="client-name"><span><a href="#"
-                                                                id="rehbarFoundation">Rehbar Foundation</a></span>
+                                                    <div class="client-name"><span><a href="#">NA</a></span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- End Single Brand  -->
 
+
                                             <!-- Start Single Brand  -->
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -2107,8 +1776,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -2121,8 +1789,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -2135,8 +1802,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -2149,8 +1815,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -2163,8 +1828,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -2177,8 +1841,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -2191,8 +1854,130 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="main-content">
                                                 <div class="inner text-center">
                                                     <div class="thumbnail">
-                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg"
-                                                                alt="Client-image"></a>
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
+                                                    </div>
+                                                    <div class="seperator"></div>
+                                                    <div class="client-name"><span><a href="#">NA</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Brand  -->
+
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-laravel" role="tabpanel" aria-labelledby="v-pills-laravel-tabs">
+                                        <div class="client-card">
+
+                                            <!-- Start Single Brand  -->
+                                            <div class="main-content">
+                                                <div class="inner text-center">
+                                                    <div class="thumbnail">
+                                                        <a href="#"><img src="assets/images/Projects/RehbarFoundation.jpg" alt="Client-image"></a>
+                                                    </div>
+                                                    <div class="seperator"></div>
+                                                    <div class="client-name"><span><a href="#" id="rehbarFoundation">Rehbar Foundation</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Brand  -->
+
+                                            <!-- Start Single Brand  -->
+                                            <div class="main-content">
+                                                <div class="inner text-center">
+                                                    <div class="thumbnail">
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
+                                                    </div>
+                                                    <div class="seperator"></div>
+                                                    <div class="client-name"><span><a href="#">NA</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Brand  -->
+
+                                            <!-- Start Single Brand  -->
+                                            <div class="main-content">
+                                                <div class="inner text-center">
+                                                    <div class="thumbnail">
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
+                                                    </div>
+                                                    <div class="seperator"></div>
+                                                    <div class="client-name"><span><a href="#">NA</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Brand  -->
+
+                                            <!-- Start Single Brand  -->
+                                            <div class="main-content">
+                                                <div class="inner text-center">
+                                                    <div class="thumbnail">
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
+                                                    </div>
+                                                    <div class="seperator"></div>
+                                                    <div class="client-name"><span><a href="#">NA</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Brand  -->
+
+                                            <!-- Start Single Brand  -->
+                                            <div class="main-content">
+                                                <div class="inner text-center">
+                                                    <div class="thumbnail">
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
+                                                    </div>
+                                                    <div class="seperator"></div>
+                                                    <div class="client-name"><span><a href="#">NA</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Brand  -->
+
+                                            <!-- Start Single Brand  -->
+                                            <div class="main-content">
+                                                <div class="inner text-center">
+                                                    <div class="thumbnail">
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
+                                                    </div>
+                                                    <div class="seperator"></div>
+                                                    <div class="client-name"><span><a href="#">NA</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Brand  -->
+
+                                            <!-- Start Single Brand  -->
+                                            <div class="main-content">
+                                                <div class="inner text-center">
+                                                    <div class="thumbnail">
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
+                                                    </div>
+                                                    <div class="seperator"></div>
+                                                    <div class="client-name"><span><a href="#">NA</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Brand  -->
+
+                                            <!-- Start Single Brand  -->
+                                            <div class="main-content">
+                                                <div class="inner text-center">
+                                                    <div class="thumbnail">
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
+                                                    </div>
+                                                    <div class="seperator"></div>
+                                                    <div class="client-name"><span><a href="#">NA</a></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Single Brand  -->
+
+                                            <!-- Start Single Brand  -->
+                                            <div class="main-content">
+                                                <div class="inner text-center">
+                                                    <div class="thumbnail">
+                                                        <a href="#"><img src="assets/images/Projects/NA pic.jpg" alt="Client-image"></a>
                                                     </div>
                                                     <div class="seperator"></div>
                                                     <div class="client-name"><span><a href="#">NA</a></span>
@@ -2235,21 +2020,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <span>Programmer, Developer</span>
                             </div>
                             <div class="description">
-                                <p>I am available for freelance work. Connect with me via and call in to my account.
-                                </p>
+                                <!-- <p>I am available for freelance work. Connect with me via and call in to my account.
+                                </p> -->
                                 <span class="phone">Phone: <a href="tel:01941043264">+91 7774882080</a></span>
-                                <span class="mail">Email: <a
-                                        href="mailto:admin@example.com">shubhamshinde9530@gmail.com</a></span>
+                                <span class="mail">Email: <a href="mailto:admin@example.com">shubhamshinde9530@gmail.com</a></span>
                             </div>
                             <div class="social-area">
                                 <div class="name">FIND WITH ME</div>
                                 <div class="social-icone">
-                                    <a href="https://www.facebook.com/profile.php?id=100009714557541" target="_blank"><i
-                                            data-feather="facebook"></i></a>
-                                    <a href="http://linkedin.com/in/shubham-shinde-588005223" target="_blank"><i
-                                            data-feather="linkedin"></i></a>
-                                    <a href="https://www.instagram.com/_shubham__shinde_" target="_blank"><i
-                                            data-feather="instagram"></i></a>
+                                    <a href="https://www.facebook.com/profile.php?id=100009714557541" target="_blank"><i data-feather="facebook"></i></a>
+                                    <a href="http://linkedin.com/in/shubham-shinde-588005223" target="_blank"><i data-feather="linkedin"></i></a>
+                                    <a href="https://www.instagram.com/_shubham__shinde_" target="_blank"><i data-feather="instagram"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -2258,44 +2039,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="contact-form-wrapper">
                             <div class="introduce">
 
-                                <form method="POST" action="" class="rnt-contact-form rwt-dynamic-form row" >
+                                <form method="POST" action="" class="rnt-contact-form rwt-dynamic-form row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="contact-name">Your Name</label>
-                                            <input class="form-control form-control-lg" required name="name"
-                                                id="contact-name" type="text">
+                                            <input class="form-control form-control-lg" required name="name" id="contact-name" type="text">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label for="contact-phone">Phone Number</label>
-                                            <input class="form-control" name="phone" id="contact-phone"
-                                                type="number">
+                                            <input class="form-control" name="phone" id="contact-phone" type="number">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="contact-email">Email</label>
-                                            <input class="form-control form-control-sm" required id="contact-email"
-                                                name="email" type="email">
+                                            <input class="form-control form-control-sm" required id="contact-email" name="email" type="email">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="subject">subject</label>
-                                            <input class="form-control form-control-sm" id="subject" name="subject"
-                                                type="text">
+                                            <input class="form-control form-control-sm" id="subject" name="subject" type="text">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="contact-message">Your Message</label>
-                                            <textarea  name="msg" required  id="contact-message" cols="30"
-                                                rows="10"></textarea>
+                                            <textarea name="msg" required id="contact-message" cols="30" rows="10"></textarea>
                                         </div>
                                     </div>
 
