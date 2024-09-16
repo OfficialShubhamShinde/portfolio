@@ -269,7 +269,7 @@
                                     <a class="read-more-button" href="#"><i class="feather-arrow-right"></i></a>
                                 </div>
                             </div>
-                            <a class="over-link" href="https://github.com/OfficialShubhamShinde"></a>
+                            <a class="over-link" href="https://github.com/dev-shubhamshinde"></a>
                         </div>
                     </div>
                     <!-- End SIngle Service -->
@@ -286,7 +286,7 @@
                                     <a class="read-more-button" href="#"><i class="feather-arrow-right"></i></a>
                                 </div>
                             </div>
-                            <a class="over-link" href="https://github.com/OfficialShubhamShinde"></a>
+                            <a class="over-link" href="https://github.com/dev-shubhamshinde"></a>
                         </div>
                     </div>
                     <!-- End SIngle Service -->
@@ -303,7 +303,7 @@
                                     <a class="read-more-button" href="#"><i class="feather-arrow-right"></i></a>
                                 </div>
                             </div>
-                            <a class="over-link" href="https://github.com/OfficialShubhamShinde"></a>
+                            <a class="over-link" href="https://github.com/dev-shubhamshinde"></a>
                         </div>
                     </div>
                     <!-- End SIngle Service -->
@@ -321,7 +321,7 @@
                                     <a class="read-more-button" href="#"><i class="feather-arrow-right"></i></a>
                                 </div>
                             </div>
-                            <a class="over-link" href="https://github.com/OfficialShubhamShinde"></a>
+                            <a class="over-link" href="https://github.com/dev-shubhamshinde"></a>
                         </div>
                     </div>
                     <!-- End SIngle Service -->
@@ -338,7 +338,7 @@
                                     <a class="read-more-button" href="#"><i class="feather-arrow-right"></i></a>
                                 </div>
                             </div>
-                            <a class="over-link" href="https://github.com/OfficialShubhamShinde"></a>
+                            <a class="over-link" href="https://github.com/dev-shubhamshinde"></a>
                         </div>
                     </div>
                     <!-- End SIngle Service -->
@@ -355,7 +355,7 @@
                                     <a class="read-more-button" href="#"><i class="feather-arrow-right"></i></a>
                                 </div>
                             </div>
-                            <a class="over-link" href="https://github.com/OfficialShubhamShinde"></a>
+                            <a class="over-link" href="https://github.com/dev-shubhamshinde"></a>
                         </div>
                     </div>
                     <!-- End SIngle Service -->
